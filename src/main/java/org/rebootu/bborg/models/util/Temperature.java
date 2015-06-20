@@ -2,9 +2,7 @@ package org.rebootu.bborg.models.util;
 
 import org.dom4j.tree.AbstractEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -13,33 +11,27 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "temperature")
+@IdClass(TemperatureZipcodeDate.class)
 public class Temperature extends AbstractEntity {
 
-    private String zipcode;
-    private Date tempDate;
+    Temperature(TemperatureZipcodeDate temperatureZipcodeDate) {
+	temperatureZipcode = temperatureZipcodeDate.getTemperatureZipcode();
+	temperatureDate = temperatureZipcodeDate.getTemperatureDate();
+	}
+
+    @Id
+	@AttributeOverrides({
+	@AttributeOverride(name = "temperatureZipcode",
+	column = @Column(name="zipcode")),
+	@AttributeOverride(name = "temperatureDate",
+	column = @Column(name="temp_date"))
+	})
+
+    private String temperatureZipcode;
+    private Date temperatureDate;
     private int highTemp;
 
     private Temperature() {}
-
-    @NotNull
-    @Column(name = "zipcode", nullable = false)
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
-
-    @NotNull
-    @Column(name = "temp_date", nullable = false)
-    public Date getTempDate() {
-        return tempDate;
-    }
-
-    public void setTempDate(Date tempDate) {
-        this.tempDate = tempDate;
-    }
 
     @NotNull
     @Column(name = "high_temp", nullable = false)
@@ -51,9 +43,9 @@ public class Temperature extends AbstractEntity {
         this.highTemp = highTempOpen;
     }
 
-    private Temperature(String zipcode, Date tempDate, int highTemp) {
-        this.zipcode = zipcode;
-        this.tempDate = tempDate;
+    private Temperature(String temperatureZipcode, Date temperatureDate, int highTemp) {
+        this.temperatureZipcode = temperatureZipcode;
+        this.temperatureDate = temperatureDate;
         this.highTemp = highTemp;
     }
 

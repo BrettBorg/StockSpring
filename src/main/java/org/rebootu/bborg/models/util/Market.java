@@ -2,9 +2,7 @@ package org.rebootu.bborg.models.util;
 
 import org.dom4j.tree.AbstractEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -13,7 +11,21 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "market")
+@IdClass(MarketSymbolDate.class)
 public class Market extends AbstractEntity {
+
+    Market(MarketSymbolDate marketSymbolDate) {
+	marketSymbol = marketSymbolDate.getMarketSymbol();
+	marketDate = marketSymbolDate.getMarketDate();
+	}
+
+    @Id
+	@AttributeOverrides({
+	@AttributeOverride(name = "marketSymbol",
+	column = @Column(name="market_symbol")),
+	@AttributeOverride(name = "marketDate",
+	column = @Column(name="market_date"))
+	})
 
     private String marketSymbol;
     private Date marketDate;
@@ -22,26 +34,6 @@ public class Market extends AbstractEntity {
     private int marketGainLoss;
 
     private Market() {}
-
-    @NotNull
-    @Column(name = "market_symbol", nullable = false)
-    public String getMarketSymbol() {
-        return marketSymbol;
-    }
-
-    public void setMarketSymbol(String marketSymbol) {
-        this.marketSymbol = marketSymbol;
-    }
-
-    @NotNull
-    @Column(name = "market_date", nullable = false)
-    public Date getMarketDate() {
-        return marketDate;
-    }
-
-    public void setMarketDate(Date marketDate) {
-        this.marketDate = marketDate;
-    }
 
     @NotNull
     @Column(name = "market_open", nullable = false)

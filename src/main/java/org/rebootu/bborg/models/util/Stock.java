@@ -2,9 +2,7 @@ package org.rebootu.bborg.models.util;
 
 import org.dom4j.tree.AbstractEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -13,7 +11,21 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "stock")
+@IdClass(StockSymbolDate.class)
 public class Stock extends AbstractEntity {
+
+    Stock(StockSymbolDate stockSymbolDate) {
+	stockSymbol = stockSymbolDate.getStockSymbol();
+	stockDate = stockSymbolDate.getStockDate();
+	}
+
+    @Id
+	@AttributeOverrides({
+	@AttributeOverride(name = "stockSymbol",
+	column = @Column(name="stock_symbol")),
+	@AttributeOverride(name = "stockDate",
+	column = @Column(name="stock_date"))
+	})
 
     private String stockSymbol;
     private Date stockDate;
@@ -22,26 +34,6 @@ public class Stock extends AbstractEntity {
     private double stockGainLoss;
 
     private Stock() {}
-
-    @NotNull
-    @Column(name = "stock_symbol", nullable = false)
-    public String getStockSymbol() {
-        return stockSymbol;
-    }
-
-    public void setStockSymbol(String stockSymbol) {
-        this.stockSymbol = stockSymbol;
-    }
-
-    @NotNull
-    @Column(name = "stock_date", nullable = false)
-    public Date getStockDate() {
-        return stockDate;
-    }
-
-    public void setStockDate(Date stockDate) {
-        this.stockDate = stockDate;
-    }
 
     @NotNull
     @Column(name = "stock_open", nullable = false)
