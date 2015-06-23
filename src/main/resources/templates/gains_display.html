@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/data/jaxb">
+
+<head th:replace="template :: head">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div id="top" th:include="template :: masthead"></div>
+
+    <div id="middle">
+
+        <div style="text-align: center;">STOCK PREDICTOR</div>
+
+        <d1>
+            <dt>If you had picked May 2015 and stock of INTC - Intel Corporation, the results will be:</dt>
+            <dd>-----------------------------------</dd>
+            <dd>May 1, 2015</dd>
+            <dd>May 4, 2015</dd>
+            <dd>May 8, 2015</dd>
+            <dd>May 11, 2015</dd>
+            <dd>May 13, 2015</dd>
+            <dd>May 14, 2015</dd>
+            <dd>May 18, 2015</dd>
+            <dd>May 20, 2015</dd>
+            <dd>May 21, 2015</dd>
+            <dd>May 27, 2015</dd>
+            <dd>May 28, 2015</dd>
+            <dd>May 29, 2015</dd>
+        </d1>
+        <a href="javascript:history.go(-1);">Back</a>
+    </div>
+
+    <div th:replace="template :: footer"></div>
+
+</div>
+
+</body>
+
+</html>

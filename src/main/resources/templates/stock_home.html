@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/data/jaxb">
+
+<head th:replace="template :: head">
+</head>
+<body>
+<div class="container">
+
+    <div id="top" th:include="template :: masthead"></div>
+
+    <div id="middle">
+
+        <div style="text-align: center;">STOCK PREDICTOR</div>
+
+        <form method="post" action="/tempForm" th:fragment="form">
+            <fieldset>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">Compare Stocks to Temperature</button>
+                </div>
+            </fieldset>
+        </form>
+
+        <form method="post" action="/foreignForm" th:fragment="form">
+            <fieldset>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">Compare Stocks to World Stock Markets</button>
+                </div>
+            </fieldset>
+        </form>
+
+        <form method="post" action="/gainsForm" th:fragment="form">
+            <fieldset>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">List Days in a Month with Gains for One Stock</button>
+                </div>
+             </fieldset>
+        </form>
+
+        <form method="post" action="/lossesForm" th:fragment="form">
+            <fieldset>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">List Days in a Month with Losses for One Stock</button>
+                </div>
+            </fieldset>
+        </form>
+
+        <form method="post" action="/openingForm" th:fragment="form">
+            <fieldset>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">List all Opening Prices in a Month for One Stock</button>
+                </div>
+            </fieldset>
+        </form>
+
+        <form method="post" action="/closingForm" th:fragment="form">
+            <fieldset>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">List all Closing Prices in a Month for One Stock</button>
+                </div>
+            </fieldset>
+        </form>
+
+        <form method="post" action="/foreignOpenForm" th:fragment="form">
+            <fieldset>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">List all Opening Prices in a Month for One World Stock Market</button>
+               </div>
+            </fieldset>
+        </form>
+
+        <form method="post" action="/foreignCloseForm" th:fragment="form">
+            <fieldset>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">List all Closing Prices in a Month for One World Stock Market</button>
+               </div>
+            </fieldset>
+        </form>
+
+    </div>
+
+    <div th:replace="template :: footer"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/data/jaxb">
+
+<head th:replace="template :: head">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div id="top" th:include="template :: masthead"></div>
+
+    <div id="middle">
+
+        <div style="text-align: center;">STOCK PREDICTOR</div>
+
+        <d1>
+            <dt>If you had picked May 2015, zipcode of 73160, high temperature and high performance, the results will be:</dt>
+            <dd>-----------------------------------</dd>
+            <dd>For May 2015 in Moore, OK, a high temperature of 84 degrees was achieved on May 18th. The best performing stock was Apple Inc. on this day.</dd>
+            <dd>***********************************</dd>
+            <dt>If you had picked May 2015, zipcode of 63101, low temperature and low performance, the results will be:</dt>
+            <dd>-----------------------------------</dd>
+            <dd>For May 2015 in St. Louis, MO, a low temperature of 57 degrees was achieved on May 20th. The low performing stock was Teradata Corporation on this day.</dd>
+        </d1>
+        <a href="javascript:history.go(-1);">Back</a>
+    </div>
+
+    <div th:replace="template :: footer"></div>
+
+</div>
+
+</body>
+
+</html>
